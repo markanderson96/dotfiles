@@ -10,14 +10,8 @@
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
 alias ll='ls -al'
 alias new='clear && /bin/bash'
-alias list="pacman -Qi | awk '/^Name/{name=$3} /^Installed Size/{print $4$5, name}' | sort -h"
 
 use_color=true
 
@@ -47,12 +41,6 @@ if ${use_color} ; then
                 fi
         fi
 
-        if [[ ${EUID} == 0 ]] ; then
-                PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
-        else
-                PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
-        fi
-
         alias ls='ls --color=auto'
         alias grep='grep --colour=auto'
 else
@@ -64,7 +52,6 @@ else
         fi
 fi
 
-# Try to keep environment pollution down, EPA loves us.
 unset use_color safe_term match_lhs
 
 # Commented out, don't overwrite xterm -T "title" -n "icontitle" by default.
