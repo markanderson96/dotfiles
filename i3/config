@@ -73,7 +73,7 @@ set $ws5 "Other"
 
 # Switch to workspaces
 bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
+bindsym $mod+2 workspace $ws2; layout tabbed; exec [$(ps h -C firefox |wc -l) = 0] && firefox -s
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
@@ -121,18 +121,6 @@ client.focused_inactive #222b2e #222b2e #eeeeee #222b2e #222b2e
 client.unfocused        #222b2e #222b2e #eeeeee #222b2e #222b2e
 client.urgent           #222b2e #222b2e #e25252 #222b2e #222b2e
 client.placeholder      #222b2e #222b2e #eeeeee #222b2e #222b2e
-
-# steam
-
-for_window [class="^Steam$" title="^Friends$"] floating enable
-for_window [class="^Steam$" title="Steam - Update News"] floating enable
-for_window [class="^Steam$" title=".* - Chat"] floating enable
-for_window [class="^Steam$" title="^Settings$"] floating enable
-for_window [class="^Steam$" title=".* - event started"] floating enable
-for_window [class="^Steam$" title=".* CD key"] floating enable
-for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
-for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
-for_window [class="^Steam$" title="Steam"] floating enable
 
 # Run commands on startup
 exec_always --no-startup-id bash ~/.config/polybar/launch.sh
