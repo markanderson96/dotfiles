@@ -23,7 +23,7 @@ bindsym $mod+Shift+q kill
 # Open applications
 bindsym $mod+Return exec termite
 bindsym $mod+p exec scrot -q 100 "/home/mark/Pictures/Screenshots/%Y-%m-%d-%s-screenshot.png"
-bindsym $mod+d exec rofi -show run -theme sidebar_custom -font "Fira Code Bold 10"
+bindsym $mod+d exec rofi -show run -theme ".sidebar_custom" -font "Fira Code Bold 10"
 bindsym $mod+g exec firefox
 
 # Change window focus
