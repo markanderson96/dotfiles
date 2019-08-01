@@ -73,7 +73,7 @@ set $ws5 "Other"
 
 # Switch to workspaces
 bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2; layout tabbed; exec [$(ps h -C firefox |wc -l) = 0] && firefox -s
+bindsym $mod+2 workspace $ws2;
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
