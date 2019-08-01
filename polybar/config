@@ -57,7 +57,7 @@ font-0 = Fira Code:style=Bold:size=10;3
 font-1 = Font Awesome 5 Free Solid:size=12;3
 
 ; Modlues
-modules-left   = thunar termite firefox atom gimp
+modules-left   = thunar termite firefox atom
 modules-center = date
 modules-right  = network battery temperature pulseaudio
 
@@ -337,7 +337,7 @@ content-foreground = ${colors.foreground}
 content-padding    = 2
 
 ; Mouse click
-click-left = atom &
+click-left = termite -e vim &
 
 [module/gimp]
 type = custom/text
