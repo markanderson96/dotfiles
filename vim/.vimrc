@@ -42,6 +42,6 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'morhetz/gruvbox'
-
+Plug 'xolox/vim-notes'
 
 call plug#end()
