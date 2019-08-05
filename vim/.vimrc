@@ -43,5 +43,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'morhetz/gruvbox'
 Plug 'xolox/vim-notes'
+Plug 'xolox/vim-misc'
 
 call plug#end()
