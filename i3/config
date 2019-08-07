@@ -12,7 +12,7 @@ for_window [class="^.*"] border pixel 0
 for_window [title="Library"] floating enable
 
 # Define gaps between windows
-gaps inner 15
+gaps inner 20
 
 # Drag floating windows (Mouse + $mod)
 floating_modifier $mod
@@ -23,7 +23,7 @@ bindsym $mod+Shift+q kill
 # Open applications
 bindsym $mod+Return exec termite
 bindsym $mod+p exec scrot -q 100 "/home/mark/Pictures/Screenshots/%Y-%m-%d-%s-screenshot.png"
-bindsym $mod+d exec rofi -show run -theme ".sidebar_custom" -font "Fira Code Bold 10"
+bindsym $mod+d exec rofi -show run -theme gruvbox-dark-soft -font "Fira Code Bold 10"
 bindsym $mod+g exec firefox
 
 # Change window focus
@@ -86,12 +86,12 @@ bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
 
 # Pulse Audio
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +1%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -1%
 
 # Screen Brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec xbacklight -inc 1
+bindsym XF86MonBrightnessDown exec xbacklight -dec 1
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
