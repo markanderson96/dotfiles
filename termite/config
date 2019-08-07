@@ -24,67 +24,107 @@ cursor_shape = block
 #size_hints = false
 scrollbar = off
 
+#[colors]
+#foreground        = #eeeeee
+#foreground_bold   = #eeeeee
+#cursor            = #16a085
+#cursor_foreground = #eeeeee
+#background        = rgba(34, 43, 46, 0.8)
+#
+## Black
+#color0  = #4f4f4f
+#
+## Black dark
+#color18 = #282828
+#
+## White
+#color15 = #e4e4e4
+#
+## Grey
+#color8  = #8e8e8e
+#
+## Grey light
+#color20 = #8e8e8e
+#
+## Gray lighter
+#color21 = #d5d5d5
+#
+## Grey lightest
+#color7  = #ffffff
+#
+## Red
+#color1  = #e25252
+#color9  = #e25252
+#
+## Green
+#color2  = #87b158
+#color10 = #87b158
+#
+## Yellow
+#color3  = #e2b322
+#color11 = #e2b322
+#
+## Blue
+#color4  = #5294e2
+#color12 = #5294e2
+#
+## Purple
+#color5  = #7e57c2
+#color13 = #7e57c2
+#
+## Teal
+#color6  = #16a085
+#color14 = #16a085
+#
+## Orange
+#color16 = #eb6637
+#
+## Cyan
+#color17 = #00bcd4
+#
+## Blue Grey
+#color19 = #607d8b
+#
 [colors]
-foreground        = #eeeeee
-foreground_bold   = #eeeeee
-cursor            = #16a085
-cursor_foreground = #eeeeee
-background        = rgba(34, 43, 46, 0.8)
+# hard contrast: background = #1d2021
+background = #282828
+# soft contrast: background = #32302f
+foreground = #ebdbb2
+foreground_bold = #ebdbb2
 
-# Black
-color0  = #4f4f4f
+# dark0 + gray
+color0 = #282828
+color8 = #928374
 
-# Black dark
-color18 = #282828
+# neutral_red + bright_red
+color1 = #cc241d
+color9 = #fb4934
 
-# White
-color15 = #e4e4e4
+# neutral_green + bright_green
+color2 = #98971a
+color10 = #b8bb26
 
-# Grey
-color8  = #8e8e8e
+# neutral_yellow + bright_yellow
+color3 = #d79921
+color11 = #fabd2f
 
-# Grey light
-color20 = #8e8e8e
+# neutral_blue + bright_blue
+color4 = #458588
+color12 = #83a598
 
-# Gray lighter
-color21 = #d5d5d5
+# neutral_purple + bright_purple
+color5 = #b16286
+color13 = #d3869b
 
-# Grey lightest
-color7  = #ffffff
+# neutral_aqua + faded_aqua
+color6 = #689d6a
+color14 = #8ec07c
 
-# Red
-color1  = #e25252
-color9  = #e25252
+# light4 + light1
+color7 = #a89984
+color15 = #ebdbb2
 
-# Green
-color2  = #87b158
-color10 = #87b158
-
-# Yellow
-color3  = #e2b322
-color11 = #e2b322
-
-# Blue
-color4  = #5294e2
-color12 = #5294e2
-
-# Purple
-color5  = #7e57c2
-color13 = #7e57c2
-
-# Teal
-color6  = #16a085
-color14 = #16a085
-
-# Orange
-color16 = #eb6637
-
-# Cyan
-color17 = #00bcd4
-
-# Blue Grey
-color19 = #607d8b
-
+# vim: ft=dosini cms=#%s
 [hints]
 #font = Consolas 11
 #foreground = #dcdccc
