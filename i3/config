@@ -12,7 +12,7 @@ for_window [class="^.*"] border pixel 0
 for_window [title="Library"] floating enable
 
 # Define gaps between windows
-gaps inner 20
+gaps inner 15
 
 # Drag floating windows (Mouse + $mod)
 floating_modifier $mod
@@ -124,6 +124,6 @@ client.placeholder      #222b2e #222b2e #eeeeee #222b2e #222b2e
 
 # Run commands on startup
 exec_always --no-startup-id bash ~/.config/polybar/launch.sh
-exec_always --no-startup-id feh --randomize --bg-fill /home/mark/Pictures/Wallpapers
+exec_always --no-startup-id feh --bg-fill /home/mark/Pictures/Wallpapers/poly.png
 exec_always --no-startup-id compton -b
 exec_always --no-startup-id unclutter
