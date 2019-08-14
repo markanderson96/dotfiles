@@ -39,7 +39,7 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # Split window in horizontal
-bindsym $mod+h split b
+bindsym $mod+b split h
 
 # Split window in vertical
 bindsym $mod+v split v
