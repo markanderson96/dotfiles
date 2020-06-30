@@ -1,0 +1,21 @@
+#! /bin/sh
+
+sxhkd &
+$HOME/.config/polybar/launch.sh
+~/.fehbg
+mpd &
+picom &
+
+bspc monitor -d I II III IV V 
+
+bspc config border_width         0
+bspc config window_gap          12
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      false
+bspc config single_monocle       true
+
+bspc rule -a Firefox desktop='^2' follow=on
+bspc rule -a mpv desktop='^5' follow=on
+bspc rule -a feh state=floating follow=on
