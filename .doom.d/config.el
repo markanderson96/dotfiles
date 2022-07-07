@@ -85,7 +85,7 @@
  "gmail"
  '((mu4e-sent-folder       . "/[Gmail]/Sent Mail")
    (mu4e-trash-folder      . "/[Gmail]/Bin")
-   (smtpmail-smtp-user     . "example@gmail.com"))
+   (smtpmail-smtp-user     . "andersm3@tcd.ie"))
  t)
 (setq smtpmail-smtp-server "smtp.gmail.com")
 (setq smtpmail-smtp-service 587)
