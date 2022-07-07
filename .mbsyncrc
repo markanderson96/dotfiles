@@ -1,0 +1,26 @@
+# imap account information
+IMAPAccount gmail
+Host imap.gmail.com
+User andersm3@tcd.ie
+PassCmd "gpg --quiet --for-your-eyes-only --no-tty --decrypt \~/.mbsync-pw-mailbox.gpg"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/cert.pem
+
+# remote storage (use the imap account specified above)
+IMAPStore gmail-remote
+Account gmail
+
+# local storage
+MaildirStore gmail-local
+Path ~/.mail/
+Inbox ~/.mail/Inbox
+Subfolders Verbatim
+
+# channel to remote storage
+Channel gmail
+Far :gmail-remote:
+Near :gmail-local:
+Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Bin"
+Create Both
+SyncState *
