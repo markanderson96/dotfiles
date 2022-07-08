@@ -85,8 +85,18 @@
  "gmail"
  '((mu4e-sent-folder       . "/[Gmail]/Sent Mail")
    (mu4e-trash-folder      . "/[Gmail]/Bin")
+   (mu4e-drafts-folder     . "/[Gmail]/Drafts")
+   (mu4e-refile-folder     . "/[Gmail]/All Mail")
    (smtpmail-smtp-user     . "andersm3@tcd.ie"))
  t)
+
+(setq mu4e-maildir-shortcuts
+      '((:maildir "/Inbox"              :key ?i)
+        (:maildir "/[Gmail]/Sent Mail"  :key ?s)
+        (:maildir "/[Gmail]/Thrash"     :key ?t)
+        (:maildir "/[Gmail]/Drafts"     :key ?d)
+        (:maildir "/[Gmail]/All Mail"   :key ?a)))
+
 (setq smtpmail-smtp-server "smtp.gmail.com")
 (setq smtpmail-smtp-service 587)
 (setq mu4e-get-mail-command "mbsync gmail"
