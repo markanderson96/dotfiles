@@ -81,31 +81,41 @@
 
 ;; Mail stuffs
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
-(set-email-account!
- "gmail"
- '((mu4e-sent-folder       . "/[Gmail]/Sent Mail")
-   (mu4e-trash-folder      . "/[Gmail]/Bin")
-   (mu4e-drafts-folder     . "/[Gmail]/Drafts")
-   (mu4e-refile-folder     . "/[Gmail]/All Mail")
-   (smtpmail-smtp-user     . "andersm3@tcd.ie"))
- t)
+(after! mu4e
+    ;; temporary aliases
+    (defalias 'mu4e~start 'mu4e--start)
+    (defalias 'mu4e~stop 'mu4e--stop)
+    (defalias 'mu4e~proc-sentinel 'mu4e--server-sentinel)
+    (defalias 'mu4e~proc-start 'mu4e--server-start)
+    (defalias 'mu4e~main-view 'mu4e--main-view)
+    (defalias 'mu4e~main-action-str 'mu4e--main-action-str)
+    (defalias 'mu4e~proc-move 'mu4e--server-move)
+    (defalias 'mu4e~mark-check-target 'mu4e--mark-check-target)
+    (set-email-account!
+     "gmail"
+     '((mu4e-sent-folder       . "/[Gmail]/Sent Mail")
+       (mu4e-trash-folder      . "/[Gmail]/Bin")
+       (mu4e-drafts-folder     . "/[Gmail]/Drafts")
+       (mu4e-refile-folder     . "/[Gmail]/All Mail")
+       (smtpmail-smtp-user     . "andersm3@tcd.ie"))
+     t)
 
-(setq mu4e-maildir-shortcuts
-      '((:maildir "/Inbox"              :key ?i)
-        (:maildir "/[Gmail]/Sent Mail"  :key ?s)
-        (:maildir "/[Gmail]/Thrash"     :key ?t)
-        (:maildir "/[Gmail]/Drafts"     :key ?d)
-        (:maildir "/[Gmail]/All Mail"   :key ?a)))
+    (setq mu4e-maildir-shortcuts
+          '((:maildir "/Inbox"              :key ?i)
+            (:maildir "/[Gmail]/Sent Mail"  :key ?s)
+            (:maildir "/[Gmail]/Thrash"     :key ?t)
+            (:maildir "/[Gmail]/Drafts"     :key ?d)
+            (:maildir "/[Gmail]/All Mail"   :key ?a)))
 
-(setq smtpmail-smtp-server "smtp.gmail.com")
-(setq smtpmail-smtp-service 587)
-(setq mu4e-get-mail-command "mbsync gmail"
-      ;; get emails and index every 5 minutes
-      mu4e-update-interval 300
-          ;; send emails with format=flowed
-          mu4e-compose-format-flowed t
-          ;; no need to run cleanup after indexing for gmail
-          mu4e-index-cleanup nil
-          mu4e-index-lazy-check t
-      ;; more sensible date format
-      mu4e-headers-date-format "%d-%m-%y")
+    (setq smtpmail-smtp-server "smtp.gmail.com")
+    (setq smtpmail-smtp-service 587)
+    (setq mu4e-get-mail-command "mbsync gmail"
+          ;; get emails and index every 5 minutes
+          mu4e-update-interval 300
+              ;; send emails with format=flowed
+              mu4e-compose-format-flowed t
+              ;; no need to run cleanup after indexing for gmail
+              mu4e-index-cleanup nil
+              mu4e-index-lazy-check t
+          ;; more sensible date format
+          mu4e-headers-date-format "%d-%m-%y"))
