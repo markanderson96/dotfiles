@@ -83,12 +83,18 @@
   ;; Rebinding evil mode kes for touch typing
   (map! :after evil
         :map evil-motion-state-map
-        "j"     #'evil-backward-char
-        "k"     #'evil-next-line
-        "l"     #'evil-previous-line)
+        "j"       #'evil-backward-char
+        "k"       #'evil-next-line
+        "l"       #'evil-previous-line)
   (map! :after evil
         :map evil-normal-state-map
-        ";"     #'evil-forward-char)
+        ";"       #'evil-forward-char)
+  (map! :after evil
+        :map evil-window-map
+        "j" #'evil-window-left
+        "k" #'evil-window-down
+        "l" #'evil-window-up
+        ";" #'evil-window-right)
 )
 ;; Mail stuffs
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
@@ -129,4 +135,5 @@
               mu4e-index-cleanup nil
               mu4e-index-lazy-check t
           ;; more sensible date format
-          mu4e-headers-date-format "%d-%m-%y"))
+          mu4e-headers-date-format "%d-%m-%y")
+)
