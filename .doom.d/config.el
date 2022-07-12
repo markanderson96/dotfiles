@@ -78,7 +78,18 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-
+;; EVIL mode stuff
+(after! evil
+  ;; Rebinding evil mode kes for touch typing
+  (map! :after evil
+        :map evil-motion-state-map
+        "j"     #'evil-backward-char
+        "k"     #'evil-next-line
+        "l"     #'evil-previous-line)
+  (map! :after evil
+        :map evil-normal-state-map
+        ";"     #'evil-forward-char)
+)
 ;; Mail stuffs
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
 (after! mu4e
