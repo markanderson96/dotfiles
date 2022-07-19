@@ -122,4 +122,7 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias doom="~/.emacs.d/bin/doom"
+alias emacsd="emacs --daemon"
+alias emacs="emacsclient"
 setopt extended_glob
