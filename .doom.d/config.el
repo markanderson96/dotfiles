@@ -37,15 +37,6 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
-
-;; Preserve clock history across sessions
-(setq org-clock-persist 'history)
-(org-clock-persistence-insinuate)
-(setq org-clock-idle-time 15)
-
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
@@ -78,6 +69,60 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; org mode stuff
+;; If you use `org' and don't want your org files in the default location below,
+;; change `org-directory'. It must be set before org loads!
+(setq org-directory "~/org/")
+;; Preserve clock history across sessions
+;; Resume clocking task when emacs is restarted
+(org-clock-persistence-insinuate)
+;; Resume clocking task on clock-in if the clock is open
+(setq org-clock-in-resume t)
+;; Remove clocked tasks with 0:00 duration
+(setq org-clock-out-remove-zero-time-clocks t)
+;; Clock out when moving task to a done state
+(setq org-clock-out-when-done t)
+;; Save the running clock and all clock history when exiting Emacs, load it on startup
+(setq org-clock-persist t)
+;; Include current clocking task in clock reports
+(setq org-clock-report-include-clocking-task t)
+;; idle clock time
+(setq org-clock-idle-time 15)
+;; hierarchy of todo's
+(setq-default org-enforce-todo-dependencies t)
+
+;; Org Roam setup
+(after! org
+  (setq org-roam-directory (concat org-directory "roam"))
+  (setq org-roam-capture-templates
+   '(("d" "Default" plain
+      "%?"
+      :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
+                         "#+title: ${title}\n")
+      :unnarrowed t)
+      ("p" "Paper" plain
+       "%?"
+       :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
+                          ":PROPERTIES:\n:AUTHORS: \n:ABSTRACT: \n:KEYWORDS: \n:YEAR: \n:END: \n#-title: ${title}\n")
+         :unnarrowed t))))
+
+(use-package! websocket
+    :after org-roam)
+
+(use-package! org-roam-ui
+    :after org-roam ;; or :after org
+    :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
+
+(map! :leader
+      :prefix ("n" . "notes")
+      (:prefix ("r" . "roam")
+       "u" #'org-roam-ui-open))
+
 ;; EVIL mode stuff
 (after! evil
   ;; Rebinding evil mode kes for touch typing
@@ -94,10 +139,10 @@
         "j" #'evil-window-left
         "k" #'evil-window-down
         "l" #'evil-window-up
-        ";" #'evil-window-right)
-)
+        ";" #'evil-window-right))
+
 ;; Mail stuffs
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
+(add-load-path! "/usr/share/emacs/site-lisp/mu4e")
 (after! mu4e
     ;; temporary aliases
     (defalias 'mu4e~start 'mu4e--start)
@@ -135,5 +180,4 @@
               mu4e-index-cleanup nil
               mu4e-index-lazy-check t
           ;; more sensible date format
-          mu4e-headers-date-format "%d-%m-%y")
-)
+          mu4e-headers-date-format "%d-%m-%y"))
