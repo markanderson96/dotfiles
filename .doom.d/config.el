@@ -157,12 +157,22 @@
   (let ((cache-dir (concat doom-cache-dir "org-ref")))
     (unless (file-exists-p cache-dir)
       (make-directory cache-dir t))
-    (setq orhc-bibtex-cache-file (concat cache-dir "/orhc-bibtex-cache"))))
+    (setq orhc-bibtex-cache-file (concat cache-dir "/orhc-bibtex-cache")))
+  :custom
+  (setq
+   bibtex-completion-notes-template-multiple-files "* ${author-or-editor}, ${title}, ${journal}, (${year}) :${=type=}: \n\nSee [[cite:&${=key=}]]\n"
+   bibtex-completion-additional-search-fields '(keywords)
+   bibtex-completion-display-formats
+        '((article       . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${journal:40}")
+          (inbook        . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
+          (incollection  . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+          (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+          (t             . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*}"))))
 
 (use-package! citar
   :no-require
   :custom
-  (org-cite-global-bibliography '("~/bib/references.bib"))
+  (org-cite-global-bibliography '("~/Sync/bib/references.bib"))
   (org-cite-insert-processor 'citar)
   (org-cite-follow-processor 'citar)
   (org-cite-activate-processor 'citar)
