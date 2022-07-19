@@ -100,22 +100,31 @@
    '(("d" "Default" plain
       "%?"
       :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
-                         "#+title: ${title}\n#+filetags: \n")
+                         "#+title: ${title}\n#+filetags: deafult\n")
+      :unnarrowed t)
+     ("c" "Concept" plain
+      "%?"
+      :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
+                         "#+title: ${title}\n#+filetags: concept\n")
+     ("i" "Idea" plain
+      "%?"
+      :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
+                         "#+title: ${title}\n#+filetags: idea\n")
       :unnarrowed t)
       ("p" "Paper" plain
        "%?"
        :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
-                          ":PROPERTIES:\n:TYPE: Paper\n:YEAR: \n:END: \n#+title: ${title}\n#+filetags: \n")
+                          ":PROPERTIES:\n:TYPE: Paper\n:YEAR: \n:END: \n#+title: ${title}\n#+filetags: paper\n")
          :unnarrowed t)
       ("b" "Book" plain
        "%?"
        :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
-                          ":PROPERTIES:\n:TYPE: Book\n:GENRE: \n:YEAR: \n:END: \n#+title: ${title}\n#+filetags: \n")
+                          ":PROPERTIES:\n:TYPE: Book\n:GENRE: \n:YEAR: \n:END: \n#+title: ${title}\n#+filetags: book\n")
          :unnarrowed t)
       ("c" "Book Chapter" plain
        "%?"
        :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
-                          ":PROPERTIES:\n:TYPE: Book Chapter\n:CHAPTER_TITLE: \n:GENRE: \n:YEAR: \n:END: \n#+title: ${title}\n#+filetags: \n")
+                          ":PROPERTIES:\n:TYPE: Book Chapter\n:CHAPTER_TITLE: \n:GENRE: \n:YEAR: \n:END: \n#+title: ${title}\n#+filetags: book chapter\n")
          :unnarrowed t))))
 
 (use-package! websocket
