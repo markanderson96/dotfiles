@@ -69,7 +69,9 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;;
 ;; org mode stuff
+;;
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
@@ -127,12 +129,40 @@
     (setq org-roam-ui-sync-theme t
           org-roam-ui-follow t
           org-roam-ui-update-on-save t
-          org-roam-ui-open-on-start t))
+          org-roam-ui-open-on-start f))
 
-(map! :leader
-      :prefix ("n" . "notes")
-      (:prefix ("r" . "roam")
-       "u" #'org-roam-ui-open))
+;(map! :leader
+;      :prefix ("n" . "notes")
+;      (:prefix ("r" . "roam")
+;       "u" #'org-roam-ui-open))
+
+(use-package! org-ref
+  :after org
+  :commands
+  (org-ref-cite-hydra/body
+   org-ref-bibtex-hydra/body)
+  ;; if you don't need any autoloaded commands, you'll need the following
+  ;; :defer t
+
+  ;; This initialization bit puts the `orhc-bibtex-cache-file` into `~/.doom/.local/cache/orhc-bibtex-cache
+  :init
+  (let ((cache-dir (concat doom-cache-dir "org-ref")))
+    (unless (file-exists-p cache-dir)
+      (make-directory cache-dir t))
+    (setq orhc-bibtex-cache-file (concat cache-dir "/orhc-bibtex-cache"))))
+
+(use-package! citar
+  :no-require
+  :custom
+  (org-cite-global-bibliography '("~/bib/references.bib"))
+  (org-cite-insert-processor 'citar)
+  (org-cite-follow-processor 'citar)
+  (org-cite-activate-processor 'citar)
+  (citar-bibliography org-cite-global-bibliography)
+  ;; optional: org-cite-insert is also bound to C-c C-x C-@
+  :bind
+  (:map org-mode-map :package org ("C-c b" . #'org-cite-insert)))
+
 
 ;; EVIL mode stuff
 (after! evil
@@ -151,6 +181,7 @@
         "k" #'evil-window-down
         "l" #'evil-window-up
         ";" #'evil-window-right))
+
 
 ;; Mail stuffs
 (add-load-path! "/usr/share/emacs/site-lisp/mu4e")
