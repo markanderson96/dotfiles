@@ -118,7 +118,6 @@
                           ":PROPERTIES:\n:TYPE: Book Chapter\n:CHAPTER_TITLE: \n:GENRE: \n:YEAR: \n:END: \n#+title: ${title}\n#+filetags: \n")
          :unnarrowed t))))
 
-
 (use-package! websocket
     :after org-roam)
 
@@ -129,7 +128,7 @@
     (setq org-roam-ui-sync-theme t
           org-roam-ui-follow t
           org-roam-ui-update-on-save t
-          org-roam-ui-open-on-start f))
+          org-roam-ui-open-on-start nil))
 
 ;(map! :leader
 ;      :prefix ("n" . "notes")

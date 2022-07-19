@@ -53,7 +53,7 @@
 (unpin! org-roam)
 (package! org-roam-ui)
 (package! org-ref)
-(package! org-roam-bibtex
-  :recipe (:host github :repo "org-roam/org-roam-bibtex"))
+;;(package! org-roam-bibtex
+;;  :recipe (:host github :repo "org-roam/org-roam-bibtex"))
 ;; When using bibtex-completion via the `biblio` module
-(unpin! bibtex-completion helm-bibtex ivy-bibtex)
+;;(unpin! bibtex-completion helm-bibtex ivy-bibtex)
