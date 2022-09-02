@@ -37,6 +37,11 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
+;; spaces > tabs and 4 > 2 or 8
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
+
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
@@ -106,6 +111,7 @@
       "%?"
       :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
                          "#+title: ${title}\n#+filetags: concept\n")
+      :unnarrowed t)
      ("i" "Idea" plain
       "%?"
       :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
@@ -137,12 +143,12 @@
     (setq org-roam-ui-sync-theme t
           org-roam-ui-follow t
           org-roam-ui-update-on-save t
-          org-roam-ui-open-on-start nil))
-
-;(map! :leader
-;      :prefix ("n" . "notes")
-;      (:prefix ("r" . "roam")
-;       "u" #'org-roam-ui-open))
+          org-roam-ui-open-on-start nil)
+    :init
+    (map! :leader
+          :prefix ("n" . "notes")
+          (:prefix ("r" . "roam")
+           "u" #'org-roam-ui-open)))
 
 (use-package! org-ref
   :after org
@@ -151,7 +157,6 @@
    org-ref-bibtex-hydra/body)
   ;; if you don't need any autoloaded commands, you'll need the following
   ;; :defer t
-
   ;; This initialization bit puts the `orhc-bibtex-cache-file` into `~/.doom/.local/cache/orhc-bibtex-cache
   :init
   (let ((cache-dir (concat doom-cache-dir "org-ref")))
@@ -176,11 +181,7 @@
   (org-cite-insert-processor 'citar)
   (org-cite-follow-processor 'citar)
   (org-cite-activate-processor 'citar)
-  (citar-bibliography org-cite-global-bibliography)
-  ;; optional: org-cite-insert is also bound to C-c C-x C-@
-  :bind
-  (:map org-mode-map :package org ("C-c b" . #'org-cite-insert)))
-
+  (citar-bibliography org-cite-global-bibliography))
 
 ;; EVIL mode stuff
 (after! evil
