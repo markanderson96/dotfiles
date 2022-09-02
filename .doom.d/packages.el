@@ -57,3 +57,6 @@
 ;;  :recipe (:host github :repo "org-roam/org-roam-bibtex"))
 ;; When using bibtex-completion via the `biblio` module
 ;;(unpin! bibtex-completion helm-bibtex ivy-bibtex)
+
+;; conda stuff
+(package! conda)
